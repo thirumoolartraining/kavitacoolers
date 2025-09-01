@@ -2,7 +2,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CartProvider } from "./features/cart";
 import { ProductsProvider } from "./features/products";
 import Layout from "./components/Layout";
@@ -34,19 +34,69 @@ const queryClient = new QueryClient({
   },
 });
 
-// Scroll to top on route change
+// Scroll to top functionality with smooth scroll and back-to-top button
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   const navType = useNavigationType();
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Show button when page is scrolled down
   useEffect(() => {
-    // Only scroll to top on navigation, not on initial load
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
     if (navType !== 'POP') {
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   }, [pathname, navType]);
 
-  return null;
+  // Handle scroll to top with smooth behavior
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
+          aria-label="Back to top"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m18 15-6-6-6 6" />
+          </svg>
+        </button>
+      )}
+    </>
+  );
 };
 
 const AppRoutes = () => (
