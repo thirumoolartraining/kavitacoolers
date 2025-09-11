@@ -551,56 +551,7 @@ function ServicesPage() {
           </div>
         </section>
 
-        {/* Partner Brands */}
-        <section className="py-16 md:py-24 bg-[#F4F7FA]">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="font-poppins text-3xl font-bold text-[#1A1A1A] sm:text-4xl">
-                Authorized Service Partner for Leading Brands
-              </h2>
-              <p className="mt-4 font-dm-sans text-lg text-[#6B7280]">
-                We are proud to be the trusted service partner for top appliance brands
-              </p>
-            </div>
-
-            <div className="mt-12">
-              <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-                {[
-                  { name: 'Samsung', logo: '/brands/samsung.png' },
-                  { name: 'LG', logo: '/brands/lg.png' },
-                  { name: 'Whirlpool', logo: '/brands/whirlpool.png' },
-                  { name: 'Godrej', logo: '/brands/godrej.png' },
-                  { name: 'Voltas', logo: '/brands/voltas.png' },
-                  { name: 'Blue Star', logo: '/brands/bluestar.png' },
-                  { name: 'Daikin', logo: '/brands/daikin.png' },
-                  { name: 'Hitachi', logo: '/brands/hitachi.png' },
-                  { name: 'Panasonic', logo: '/brands/panasonic.png' },
-                  { name: 'V-Guard', logo: '/brands/vguard.png' },
-                  { name: 'Carrier', logo: '/brands/carrier.png' },
-                  { name: 'IFB', logo: '/brands/ifb.png' },
-                ].map((brand, index) => (
-                  <motion.div 
-                    key={brand.name}
-                    className="flex h-24 items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
-                    whileHover={{ y: -5, scale: 1.05 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <div className="relative h-12 w-full">
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Partner Brands Section Removed */}
 
         {/* Testimonials */}
         <section className="py-16 md:py-24 bg-white">

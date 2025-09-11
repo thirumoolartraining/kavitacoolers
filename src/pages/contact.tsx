@@ -15,7 +15,7 @@ const ContactPage = () => {
     email: '',
     topic: '',
     applianceType: '',
-    brand: '',
+    applianceBrand: '',
     message: '',
     preferredDate: ''
   });
@@ -92,31 +92,7 @@ const ContactPage = () => {
     }
   };
 
-  // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
-  // Brand logos
-  const brands = [
-    { name: 'Godrej', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Godrej_logo.svg/2560px-Godrej_logo.svg.png' },
-    { name: 'Panasonic', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Panasonic_logo_%28blue%29.svg/2560px-Panasonic_logo_%28blue%29.svg.png' },
-    { name: 'Bosch', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Bosch-logo.svg/2560px-Bosch-logo.svg.png' },
-    { name: 'Siemens', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Siemens_AG_logo.svg/1280px-Siemens_AG_logo.svg.png' },
-    { name: 'Liebherr', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Liebherr_Logo.svg/2560px-Liebherr_Logo.svg.png' },
-    { name: 'V-Guard', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/V-Guard_Industries_Logo.svg/2560px-V-Guard_Industries_Logo.svg.png' },
-  ];
 
   return (
     <div className="min-h-screen bg-[#F4F7FA]">
@@ -152,16 +128,13 @@ const ContactPage = () => {
       {/* Contact Methods */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6 md:px-8">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={container}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <motion.div 
               className="bg-[#F4F7FA] p-6 rounded-xl hover:shadow-md transition-all duration-300"
-              variants={item}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
             >
               <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -177,7 +150,10 @@ const ContactPage = () => {
 
             <motion.div 
               className="bg-[#F4F7FA] p-6 rounded-xl hover:shadow-md transition-all duration-300"
-              variants={item}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
             >
               <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -192,7 +168,10 @@ const ContactPage = () => {
 
             <motion.div 
               className="bg-[#F4F7FA] p-6 rounded-xl hover:shadow-md transition-all duration-300"
-              variants={item}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
             >
               <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -208,7 +187,10 @@ const ContactPage = () => {
 
             <motion.div 
               className="bg-[#F4F7FA] p-6 rounded-xl hover:shadow-md transition-all duration-300"
-              variants={item}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
             >
               <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -226,7 +208,7 @@ const ContactPage = () => {
               </a>
               <p className="text-sm text-gray-500 mt-2">No:505/B23, Asirvatham Nagar,<br />MS Road, Vetturnimadam<br />Nagercoil, Kanniyakumari<br />Tamil Nadu - 629001</p>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -363,23 +345,15 @@ const ContactPage = () => {
                         </div>
                         
                         <div className="space-y-2">
-                          <Label htmlFor="brand">Brand</Label>
-                          <Select 
-                            value={formData.brand} 
-                            onValueChange={(value) => setFormData({...formData, brand: value})}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select brand (optional)" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {brands.map(brand => (
-                                <SelectItem key={brand.name.toLowerCase()} value={brand.name.toLowerCase()}>
-                                  {brand.name}
-                                </SelectItem>
-                              ))}
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
+                          <Label htmlFor="applianceBrand">Appliance Brand *</Label>
+                          <Input
+                            id="applianceBrand"
+                            name="applianceBrand"
+                            type="text"
+                            value={formData.applianceBrand}
+                            onChange={handleChange}
+                            placeholder="Enter appliance brand"
+                          />
                         </div>
                       </>
                     )}
@@ -500,47 +474,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Brand Assurance */}
-      <section className="py-16 md:py-24 bg-[#F4F7FA]">
-        <div className="container mx-auto px-6 md:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm font-medium text-primary mb-4">AUTHORIZED DEALER & SERVICE PROVIDER</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Trusted by Leading Brands</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We are proud to be an authorized partner for these premium appliance brands
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={container}
-          >
-            {brands.map((brand) => (
-              <motion.div 
-                key={brand.name}
-                className="bg-white p-6 rounded-xl flex items-center justify-center h-32 hover:shadow-md transition-all duration-300"
-                variants={item}
-                whileHover={{ y: -5 }}
-              >
-                <img 
-                  src={brand.logo} 
-                  alt={brand.name} 
-                  className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-primary text-white">

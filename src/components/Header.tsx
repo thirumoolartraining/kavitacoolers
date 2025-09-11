@@ -7,9 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
-// Using public path for the logo
-const logo = '/logo.png';
-
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -51,16 +48,11 @@ const Header = () => {
         <div className="container-main">
           <div className="flex items-center justify-between h-16 md:h-20">
             
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <img 
-                src={logo} 
-                alt="Kavita Cooler Services Logo" 
-                className="h-12 w-auto object-contain"
-              />
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-secondary">Kavita Cooler Services</h1>
-                <p className="text-xs text-muted-foreground">Authorized Dealers & Service</p>
+            {/* Brand Name */}
+            <Link to="/" className="flex items-center">
+              <div className="text-left">
+                <h1 className="text-2xl font-bold text-secondary">Kavita Cooler Services</h1>
+                <p className="text-sm text-muted-foreground">Authorized Dealers & Service</p>
               </div>
             </Link>
 
