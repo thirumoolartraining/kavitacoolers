@@ -24,14 +24,24 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "dist",
       sourcemap: true,
+      assetsInlineLimit: 0, // Ensure all assets are copied as files
       rollupOptions: {
         output: {
           manualChunks: {
             react: ['react', 'react-dom', 'react-router-dom'],
             vendor: ['@radix-ui/react-dialog', 'class-variance-authority', 'clsx', 'zod'],
           },
+          assetFileNames: (assetInfo) => {
+            // Keep the original filename for all assets
+            return assetInfo.name || '';
+          },
         },
       },
+    },
+    server: {
+      // Ensure static files are served correctly in development
+      host: true,
+      port: 3000,
     },
     // Ensure env vars are properly exposed to the client
     define: {

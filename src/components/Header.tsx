@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import logo from '/logo.png';
+const logo = '/logo.png';
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -53,7 +53,7 @@ const Header = () => {
             <Link to="/" className="flex items-center gap-3">
               <img 
                 src={logo} 
-                alt="Kavita Cooler Logo" 
+                alt="Kavita Cooler Services Logo" 
                 className="h-12 w-auto object-contain"
               />
               <div className="hidden sm:block">
