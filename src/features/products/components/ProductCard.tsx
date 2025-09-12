@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion, MotionConfig, HTMLMotionProps } from "framer-motion";
-import { Star, ShoppingCart, Check, Heart, HeartOff } from "lucide-react";
+import { Star, ShoppingCart, Check, Heart } from "lucide-react";
 import { useCart } from "@/features/cart";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -162,9 +162,10 @@ export function ProductCard({
                 isCompact ? "h-16 w-16" : "h-48 w-48"
               )}
               loading="lazy"
-              onError={(e) => {
+              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                 // Fallback to a placeholder if image fails to load
-                e.currentTarget.src = `${process.env.PUBLIC_URL || ''}/placeholder.svg`;
+                const target = e.target as HTMLImageElement;
+                target.src = `${process.env.PUBLIC_URL || ''}/placeholder.svg`;
               }}
             />
             {!inStock && (
@@ -261,60 +262,57 @@ export function ProductCard({
                 </div>
               )}
               
-              <div className="mt-3">
-                <MotionButton
-                  size={isCompact ? "sm" : "default"}
-                  className={cn(
-                    "w-full",
-                    isCompact && "h-8 text-xs"
-                  )}
-                  onClick={handleAddToCart}
-                  disabled={!inStock || isAdding || isAdded}
-                  whileTap={!isAdding && !isAdded ? { scale: 0.98 } : {}}
-                >
-                  {isAdding ? (
+              <MotionButton
+                className={cn(
+                  "mt-3 w-full",
+                  isCompact ? "h-8 text-xs" : "h-10 text-sm"
+                )}
+                onClick={handleAddToCart}
+                disabled={!inStock || isAdding || isAdded}
+                whileTap={!isAdding && !isAdded ? { scale: 0.95 } : {}}
+              >
+                {isAdding ? (
+                  <motion.span 
+                    className="inline-flex items-center gap-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
                     <motion.span
-                      className="inline-flex items-center gap-1.5"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <motion.span
-                        className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent"
-                        transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
-                      />
-                      Adding...
-                    </motion.span>
-                  ) : isAdded ? (
-                    <motion.span
-                      className="inline-flex items-center gap-1.5"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <Check className="h-4 w-4" />
-                      Added
-                    </motion.span>
-                  ) : itemInCart ? (
-                    <motion.span
-                      className="inline-flex items-center gap-1.5"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <Check className="h-4 w-4" />
-                      In Cart
-                    </motion.span>
-                  ) : !inStock ? (
-                    "Out of Stock"
-                  ) : (
-                    <motion.span className="inline-flex items-center gap-1.5">
-                      <ShoppingCart className="h-4 w-4" />
-                      Add to Cart
-                    </motion.span>
-                  )}
-                </MotionButton>
-              </div>
+                      className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent"
+                      transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
+                    />
+                    Adding...
+                  </motion.span>
+                ) : isAdded ? (
+                  <motion.span
+                    className="inline-flex items-center gap-1.5"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <Check className="h-4 w-4" />
+                    Added
+                  </motion.span>
+                ) : itemInCart ? (
+                  <motion.span
+                    className="inline-flex items-center gap-1.5"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <Check className="h-4 w-4" />
+                    In Cart
+                  </motion.span>
+                ) : !inStock ? (
+                  "Out of Stock"
+                ) : (
+                  <motion.span className="inline-flex items-center gap-1.5">
+                    <ShoppingCart className="h-4 w-4" />
+                    Add to Cart
+                  </motion.span>
+                )}
+              </MotionButton>
             </div>
           </div>
         </motion.article>
