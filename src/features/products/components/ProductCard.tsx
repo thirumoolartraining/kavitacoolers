@@ -155,13 +155,17 @@ export function ProductCard({
             isCompact ? "h-20 w-20 shrink-0 rounded-lg" : "aspect-square"
           )}>
             <img
-              src={image}
+              src={image.startsWith('http') ? image : `${process.env.PUBLIC_URL || ''}${image}`}
               alt={title}
               className={cn(
                 "h-full w-full object-contain transition-transform group-hover:scale-105",
                 isCompact ? "h-16 w-16" : "h-48 w-48"
               )}
               loading="lazy"
+              onError={(e) => {
+                // Fallback to a placeholder if image fails to load
+                e.currentTarget.src = `${process.env.PUBLIC_URL || ''}/placeholder.svg`;
+              }}
             />
             {!inStock && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/50">
