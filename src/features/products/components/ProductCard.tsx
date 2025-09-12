@@ -155,7 +155,7 @@ export function ProductCard({
             isCompact ? "h-20 w-20 shrink-0 rounded-lg" : "aspect-square"
           )}>
             <img
-              src={image.startsWith('http') ? image : `${process.env.PUBLIC_URL || ''}${image}`}
+              src={image}
               alt={title}
               className={cn(
                 "h-full w-full object-contain transition-transform group-hover:scale-105",
@@ -163,9 +163,9 @@ export function ProductCard({
               )}
               loading="lazy"
               onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                // Fallback to a placeholder if image fails to load
                 const target = e.target as HTMLImageElement;
-                target.src = `${process.env.PUBLIC_URL || ''}/placeholder.svg`;
+                target.src = '/placeholder.svg';
+                target.onerror = null; // Prevent infinite loop if placeholder also fails
               }}
             />
             {!inStock && (

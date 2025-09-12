@@ -9,6 +9,12 @@ export default defineConfig(({ mode }) => {
     base: "/",
     publicDir: 'public',
     plugins: [react()],
+    server: {
+      // Ensure Vite serves files from the public directory
+      fs: {
+        strict: false
+      }
+    },
     resolve: {
       alias: [
         { find: '@', replacement: path.resolve(__dirname, 'src') },

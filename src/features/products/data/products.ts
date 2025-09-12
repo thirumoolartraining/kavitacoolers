@@ -1,5 +1,19 @@
 import { Product } from '../types';
 
+// Import all product images using public URL references
+const product1 = '/1.jpg';
+const product2 = '/2.jpg';
+const product3 = '/3.jpg';
+const product4 = '/4.jpg';
+const product5 = '/5.jpg';
+const product6 = '/6.jpg';
+const product7 = '/7.jpg';
+const product8 = '/8.jpg';
+const product9 = '/9.jpg';
+const product10 = '/10.jpg';
+const product11 = '/11.jpg';
+const product12 = '/12.jpg';
+
 export const products: Product[] = [
   {
     id: "1",
@@ -11,13 +25,13 @@ export const products: Product[] = [
     discountPct: 21,
     rating: 4.5,
     reviewsCount: 1245,
-    image: "/1.jpg",
+    image: product1,
     inStock: true,
     description: "Experience stunning 4K UHD resolution with HDR for incredible detail, vibrant colors, and deep contrast. Smart TV features let you stream movies, shows, and music from your favorite apps.",
     images: [
-      "/1.jpg",
-      "/2.jpg",
-      "/3.jpg"
+      product1,
+      product2,
+      product3
     ],
     features: [
       "4K UHD Resolution (3840 x 2160)",
@@ -45,14 +59,14 @@ export const products: Product[] = [
     discountPct: 15,
     rating: 4.3,
     reviewsCount: 987,
-    image: "/4.jpg",
+    image: product4,
     inStock: true,
     capacity: "1.5 Ton",
     energyRating: "5 Star",
     description: "Experience powerful cooling with energy efficiency. LG's 5-star rated inverter split AC provides rapid cooling while consuming less power.",
     images: [
-      "/4.jpg",
-      "/5.jpg"
+      product4,
+      product5
     ],
     features: [
       "5 Star Energy Rating",
@@ -80,28 +94,28 @@ export const products: Product[] = [
     discountPct: 14,
     rating: 4.2,
     reviewsCount: 876,
-    image: "/6.jpg",
+    image: product6,
     inStock: true,
     capacity: "7.5 kg",
     description: "Experience hassle-free laundry with Whirlpool's fully automatic top load washing machine. Features multiple wash programs and ZPF technology for optimal wash quality.",
     images: [
-      "/6.jpg",
-      "/7.jpg"
+      product6,
+      product7
     ],
     features: [
-      "7.5 kg Capacity",
-      "Fully Automatic Top Load",
-      "Multiple Wash Programs",
-      "ZPF Technology",
-      "Hard Water Wash"
+      "ZPF Technology for Uniform Water Distribution",
+      "6th Sense Soft Move Technology",
+      "Hard Water Wash",
+      "Express Wash",
+      "Smart Sensors"
     ],
-    tags: ["Washing Machine", "Fully Automatic", "Top Load"],
+    tags: ["Washing Machine", "Fully Automatic", "Top Load", "7.5 kg"],
     specs: {
       "Capacity": "7.5 kg",
       "Type": "Fully Automatic Top Load",
+      "Special Features": "ZPF Technology, Hard Water Wash, Express Wash",
       "Wash Programs": "12",
-      "Special Features": "Hard Water Wash, ZPF Technology",
-      "Energy Rating": "3 Star"
+      "Spin Speed": "740 RPM"
     }
   },
   {
@@ -114,13 +128,13 @@ export const products: Product[] = [
     discountPct: 12,
     rating: 4.4,
     reviewsCount: 765,
-    image: "/8.jpg",
+    image: product8,
     inStock: true,
     capacity: "253 L",
     description: "Samsung's 3-star double door refrigerator with digital inverter technology ensures optimal cooling while being energy efficient. Features include twin cooling plus and stabilizer-free operation.",
     images: [
-      "/8.jpg",
-      "/9.png"
+      product8,
+      product9
     ],
     features: [
       "253L Capacity",
@@ -148,12 +162,12 @@ export const products: Product[] = [
     discountPct: 17,
     rating: 4.1,
     reviewsCount: 543,
-    image: "/10.jpg",
+    image: product10,
     inStock: true,
     capacity: "48-inch",
     description: "Havells 48-inch premium ceiling fan with remote control for convenient operation. Features high speed air delivery and energy efficient motor.",
     images: [
-      "/10.jpg"
+      product10
     ],
     features: [
       "48-inch Sweep",
@@ -181,13 +195,13 @@ export const products: Product[] = [
     discountPct: 10,
     rating: 4.6,
     reviewsCount: 1123,
-    image: "/11.jpg",
+    image: product11,
     inStock: true,
     capacity: "8.0 kg",
     description: "LG's 5-star rated front load washing machine with AI DD™ and 6 Motion Direct Drive technology for perfect wash care. Steam for hygiene and allergy care.",
     images: [
-      "/11.jpg",
-      "/12.jpg"
+      product11,
+      product12
     ],
     features: [
       "8.0 kg Capacity",
@@ -215,12 +229,12 @@ export const products: Product[] = [
     discountPct: 18,
     rating: 4.7,
     reviewsCount: 1345,
-    image: "/1.jpg",
+    image: product1,
     inStock: true,
     description: "Experience breathtaking 4K HDR picture quality with Sony's X1 4K HDR Processor. Smart TV with Android TV, Google Assistant built-in, and Chromecast built-in.",
     images: [
-      "/1.jpg",
-      "/2.jpg"
+      product1,
+      product2
     ],
     features: [
       "65\" 4K HDR Processor X1",
@@ -248,12 +262,12 @@ export const products: Product[] = [
     discountPct: 11,
     rating: 4.3,
     reviewsCount: 923,
-    image: "/4.jpg",
+    image: product4,
     inStock: true,
     capacity: "1.5 Ton",
     description: "Voltas 3-star split inverter AC with superior cooling and energy efficiency. Features include 4-way swing, anti-dust filter, and stabilizer-free operation.",
     images: [
-      "/4.jpg"
+      product4
     ],
     features: [
       "1.5 Ton Capacity",
@@ -281,12 +295,12 @@ export const products: Product[] = [
     discountPct: 11,
     rating: 4.0,
     reviewsCount: 654,
-    image: "/8.jpg",
+    image: product8,
     inStock: true,
     capacity: "190 L",
     description: "Godrej 190L direct cool single door refrigerator with smart connect technology. Features include toughened glass shelves and fruit & vegetable box with humidity control.",
     images: [
-      "/8.jpg"
+      product8
     ],
     features: [
       "190L Capacity",
@@ -314,12 +328,12 @@ export const products: Product[] = [
     discountPct: 21,
     rating: 4.2,
     reviewsCount: 876,
-    image: "/10.jpg",
+    image: product10,
     inStock: true,
     capacity: "48-inch",
     description: "Bajaj 1200mm premium ceiling fan with high speed motor and superior air delivery. Features include rust-proof blades and 2-year warranty.",
     images: [
-      "/10.jpg"
+      product10
     ],
     features: [
       "1200mm Sweep",
@@ -347,12 +361,12 @@ export const products: Product[] = [
     discountPct: 14,
     rating: 4.5,
     reviewsCount: 1023,
-    image: "/11.jpg",
+    image: product11,
     inStock: true,
     capacity: "6.5 kg",
     description: "IFB 6.5 kg fully automatic front load washing machine with Aqua Energie technology for hygiene washing. Features include steam wash and 9 wash programs.",
     images: [
-      "/11.jpg"
+      product11
     ],
     features: [
       "6.5 kg Capacity",
@@ -380,12 +394,12 @@ export const products: Product[] = [
     discountPct: 10,
     rating: 4.6,
     reviewsCount: 876,
-    image: "/4.jpg",
+    image: product4,
     inStock: true,
     capacity: "2.0 Ton",
     description: "Hitachi 2.0 ton 5-star inverter split AC with PM 2.5 filter and eco mode. Features include 100% copper condenser and stabilizer free operation.",
     images: [
-      "/4.jpg"
+      product4
     ],
     features: [
       "2.0 Ton Capacity",
